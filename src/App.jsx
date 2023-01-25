@@ -4,23 +4,24 @@ import { Container } from 'Components/common/Container/Container';
 import { AppBar } from 'Components/UserMenu/AppBar';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
+import Contacts from 'pages/Contacts/Contacts';
 import { RotatingLines } from 'react-loader-spinner';
 import { HomePage } from 'Components/HomePage/HomePage';
 import authOperations from 'redux/auth/auth-operations';
-import { useEffect, lazy } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { PrivateRoute } from 'Components/UserMenu/PrivateRoute';
 import { RestrictedRoute } from 'Components/UserMenu/RestrictedRoute';
 import { Error } from 'Components/Error/Error';
 import { Suspense } from 'react';
 
-const Contacts = lazy(() => import('pages/Contacts/Contacts'));
-
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
+
   return (
     <Container>
       <Suspense fallback={<RotatingLines strokeColor="pink" width="80" />}>
