@@ -62,7 +62,7 @@ export default Form;
 
 const ContactsForm = styled.form`
   width: 50%;
-  padding: 10px;
+  padding: 12px;
   margin: 0 auto 20px;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,6 @@ const ContactsForm = styled.form`
   box-shadow: 1px 1px 5px #ffb5b5, -1px -1px 5px #ffb5b5;
   border-radius: 15px;
   overflow: hidden;
-  // background-color: #ffd4d4;
   button {
     width: 100px;
   }

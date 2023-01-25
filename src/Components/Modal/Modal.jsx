@@ -3,18 +3,26 @@ import PropTypes from 'prop-types';
 import { Button } from 'Components/common/Button/Button';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import profilePlaceholder from '../../icons/profilePlaceholder.png';
 
-export const Modal = ({ hideModal, user }) => {
+export const Modal = ({ showModal, user }) => {
   const dispatch = useDispatch();
 
-  // const display = showModal ? 'block' : 'none';
   return (
     <ModalBox>
-      <p>{user.name}</p>
-      <p>{user.email}</p>
+      <CloseBtn onClick={() => showModal(false)}>x</CloseBtn>
+
+      <div>
+        <ProfileName>
+          <ProfilePhoto src={profilePlaceholder} alt="profile image" />
+          <p>{user.name}</p>
+        </ProfileName>
+        <p>{user.email}</p>
+      </div>
+
       <Button
         onClick={() => {
-          hideModal(false);
+          showModal(false);
           dispatch(authOperations.logOut());
         }}
       >
@@ -23,14 +31,18 @@ export const Modal = ({ hideModal, user }) => {
     </ModalBox>
   );
 };
+Modal.propTypes = {
+  hideModal: PropTypes.func,
+  user: PropTypes.object,
+};
 
 const ModalBox = styled.div`
   width: 250px;
-  height: 100px;
-  padding: 10px;
+  height: 200px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-around;
   box-shadow: 1px 1px 5px #ffb5b5, -1px -1px 5px #ffb5b5;
   border-radius: 15px;
   overflow: hidden;
@@ -40,9 +52,42 @@ const ModalBox = styled.div`
   &.visible {
     display: block;
   }
+  button {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
-Modal.propTypes = {
-  showModal: PropTypes.bool,
-  user: PropTypes.object,
-};
+const ProfileName = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  p {
+    font-weight: 700;
+  }
+`;
+
+const ProfilePhoto = styled.img`
+  width: 40px;
+`;
+
+const CloseBtn = styled.button`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: grey;
+  background-color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition-duration: 250ms;
+  &:hover {
+    color: #ffb5b5;
+    border: 1px solid #ffb5b5;
+  }
+`;

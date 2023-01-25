@@ -1,6 +1,6 @@
 import { Label } from 'Components/common/Label/Label';
 import { Button } from 'Components/common/Button/Button';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Watermelon from '../../icons/Watermelon.png';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -10,7 +10,6 @@ import authOperations from 'redux/auth/auth-operations';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = e => {

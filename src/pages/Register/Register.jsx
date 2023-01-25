@@ -1,24 +1,17 @@
 import { Label } from 'Components/common/Label/Label';
 import { Button } from 'Components/common/Button/Button';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Watermelon from '../../icons/Watermelon.png';
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
-import authSelectors from 'redux/auth/auth-selectors';
 
 const Register = () => {
-  // const isLoggedIn = useSelector(authSelectors.getUser);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   navigate('/contacts');
-  // }, [isLoggedIn]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -121,7 +114,6 @@ const LogoWrapper = styled.div`
   background: linear-gradient(#fcf4f0, #fcd8c7);
   display: none;
   @media screen and (min-width: 480px) {
-    // display: none;
   }
 
   @media screen and (min-width: 1280px) {
