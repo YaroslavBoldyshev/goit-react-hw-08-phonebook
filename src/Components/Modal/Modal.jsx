@@ -49,6 +49,8 @@ const ModalBox = styled.div`
   position: absolute;
   top: 65px;
   right: 0px;
+  z-index: 99;
+  background-color: white;
   &.visible {
     display: block;
   }

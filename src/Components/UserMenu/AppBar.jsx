@@ -72,7 +72,7 @@ const Logo = styled(NavLink)`
   color: black;
   gap: 5px;
   position: absolute;
-  left: 45%;
+  left: 42%;
   & p {
     font-weight: 700;
     font-size: 24px;
