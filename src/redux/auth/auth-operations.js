@@ -54,6 +54,7 @@ const getCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     return data.data;
   } catch (err) {
     console.log(err.message);
+    return Promise.reject();
   }
 });
 
